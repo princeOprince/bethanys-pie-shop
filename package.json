@@ -1,0 +1,27 @@
+{
+  "name": "bethanys-pie-shop",
+  "version": "1.0.0",
+  "description": "REST API for Bethany's pie shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/princeOprince/bethanys-pie-shop.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "rest-api",
+    "bethanys-pie-shop",
+    "node",
+    "web-development"
+  ],
+  "author": "Prince O Prince",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/princeOprince/bethanys-pie-shop/issues"
+  },
+  "homepage": "https://github.com/princeOprince/bethanys-pie-shop#readme"
+}
