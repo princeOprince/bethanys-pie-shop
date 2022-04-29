@@ -117,6 +117,39 @@ router.put('/:id', (req, res, next) => {
     );
 });
 
+router.delete('/:id', (req, res, next) => {
+    pieRepo.getById(
+        req.params.id,
+        data => {
+            if (data) {
+                pieRepo.delete(
+                    req.params.id,
+                    data => {
+                        res.status(200).json({
+                            "status": 200,
+                            "statusText": "OK",
+                            "message": `Pie '${req.params.id}' deleted`,
+                            "data": `Pie '${req.params.id}' deleted`
+                        });
+                    },
+                    err => next(err)
+                );
+            } else {
+                res.status(404).json({
+                    "status": 404,
+                    "statusText": "Not Found",
+                    "message": `The pie '${req.params.id}' could not be found.`,
+                    "error": {
+                        "code": "NOT_FOUND",
+                        "message": `The pie '${req.params.id}' could not be found.`
+                    }
+                });
+            }
+        },
+        err => next(err)
+    );
+});
+
 app.use('/api/', router);
 
 app.listen(5000, () => {

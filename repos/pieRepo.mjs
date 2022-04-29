@@ -74,5 +74,25 @@ export const pieRepo = {
                 }
             }
         });
+    },
+    delete: (id, resolve, reject) => {
+        fs.readFile(FILE_NAME, (err, data) => {
+            if (err) {
+                reject(err)
+            } else {
+                const pies = JSON.parse(data);
+                const pieIndex = pies.findIndex(p => p.id == id);
+                if (pieIndex) {
+                    pies.splice(pieIndex, 1);
+                    fs.writeFile(FILE_NAME, JSON.stringify(pies), err => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(pieIndex);
+                        }
+                    });
+                }
+            }
+        });
     }
 };
