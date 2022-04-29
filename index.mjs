@@ -2,13 +2,10 @@ import express from "express";
 const app = express();
 import debug from "debug";
 const log = debug('bethany:rest-server');
+import { pieRepo } from "./repos/pieRepo.mjs";
 
 const router = express.Router();
-let pies = [
-    { "id": 1, "name": "Apple"},
-    { "id": 2, "name": "Cherry"},
-    { "id": 3, "name": "Peach"}
-]
+const pies = pieRepo.get();
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
