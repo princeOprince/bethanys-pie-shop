@@ -54,5 +54,25 @@ export const pieRepo = {
                 });
             }
         });
+    },
+    update: (newData, id, resolve, reject) => {
+        fs.readFile(FILE_NAME, (err, data) => {
+            if (err) {
+                reject(err)
+            } else {
+                const pies = JSON.parse(data);
+                const pie = pies.find(p => p.id == id);
+                if (pie) {
+                    Object.assign(pie, newData);
+                    fs.writeFile(FILE_NAME, JSON.stringify(pies), err => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(newData);
+                        }
+                    });
+                }
+            }
+        });
     }
 };
