@@ -11,7 +11,12 @@ let pies = [
 ]
 
 router.get('/', (req, res, next) => {
-    res.status(200).send(pies);
+    res.status(200).json({
+        "status": 200,
+        "statusText": "OK",
+        "message": "All pies retrieved",
+        "data": pies
+    });
 });
 
 app.use('/api/', router);
