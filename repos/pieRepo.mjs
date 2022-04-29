@@ -1,9 +1,14 @@
+import fs from "fs";
+const FILE_NAME = "./assets/pies.json";
+
 export const pieRepo = {
-    get: () => {
-        return [
-            { "id": 1, "name": "Apple" },
-            { "id": 2, "name": "Cherry" },
-            { "id": 3, "name": "Peach" }
-        ];
+    get: (resolve, reject) => {
+        fs.readFile(FILE_NAME, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(JSON.parse(data));
+            }
+        });
     }
 };
