@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "name": "Greenish Apple",
-        "wholePrice": 19.99,
+        "name": "Apple",
+        "wholePrice": 22.22,
         "slicePrice": 4.99,
         "sliceCalories": 67,
-        "imageUrl": "images/greenishapple.jpg"
+        "imageUrl": "images/apple.jpg"
     },
     {
         "id": 2,
