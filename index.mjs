@@ -11,7 +11,7 @@ let pies = [
 ]
 
 router.get('/', (req, res, next) => {
-    res.send(pies);
+    res.status(200).send(pies);
 });
 
 app.use('/api/', router);
