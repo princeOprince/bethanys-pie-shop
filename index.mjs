@@ -5,7 +5,7 @@ const log = debug('bethany:rest-server');
 import { pieRepo } from "./repos/pieRepo.mjs";
 
 const router = express.Router();
-// const pies = pieRepo.get();
+app.use(express.json());
 
 router.get('/', (req, res, next) => {
     pieRepo.get(
@@ -66,6 +66,21 @@ router.get('/:id', (req, res, next) => {
         },
         err => next(err)
     );
+});
+
+router.post('/', (req, res, next) => {
+    pieRepo.insert(
+        req.body,
+        data => {
+            res.status(201).json({
+                "status": 201,
+                "statusText": "Created",
+                "message": "New pie added.",
+                "data": data
+            });
+        },
+        err => next(err)
+        );
 });
 
 app.use('/api/', router);

@@ -14,11 +14,11 @@ export const pieRepo = {
     getById: (id, resolve, reject) => {
         fs.readFile(FILE_NAME, (err, data) => {
             if (err) {
-                reject(err)
+                reject(err);
             } else {
                 resolve(JSON.parse(data).find(p => p.id == id));
             }
-        } );
+        });
     },
     search: (searchObject, resolve, reject) => {
         fs.readFile(FILE_NAME, (err, data) => {
@@ -36,6 +36,23 @@ export const pieRepo = {
                 }
                 resolve(pies);
             }
-        } )
+        });
+    },
+    insert: (newData, resolve, reject) => {
+        fs.readFile(FILE_NAME, (err, data) => {
+            if (err) {
+                reject(err)
+            } else {
+                let pies = JSON.parse(data);
+                pies.push(newData);
+                fs.writeFile(FILE_NAME, JSON.stringify(pies), err => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(newData);
+                    }
+                });
+            }
+        });
     }
 };
